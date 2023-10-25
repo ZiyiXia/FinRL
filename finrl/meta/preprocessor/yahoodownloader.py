@@ -47,6 +47,7 @@ class YahooDownloader:
         data_df = pd.DataFrame()
         num_failures = 0
         for tic in self.ticker_list:
+            print(tic)
             temp_df = yf.download(
                 tic, start=self.start_date, end=self.end_date, proxy=proxy
             )
