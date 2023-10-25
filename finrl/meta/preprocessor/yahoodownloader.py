@@ -47,7 +47,6 @@ class YahooDownloader:
         data_df = pd.DataFrame()
         num_failures = 0
         for tic in self.ticker_list:
-            print(tic)
             temp_df = yf.download(
                 tic, start=self.start_date, end=self.end_date, proxy=proxy
             )
@@ -60,6 +59,7 @@ class YahooDownloader:
         if num_failures == len(self.ticker_list):
             raise ValueError("no data is fetched.")
         # reset the index, we want to use numbers as index instead of dates
+        print("Shape of DataFrame: ", data_df.shape)
         data_df = data_df.reset_index()
         try:
             # convert the column names to standardized names
